@@ -4,13 +4,12 @@ This page summarizes the scoring options we have been discussing for the tract-l
 
 At a high level, I think the key screening question is not just “where are emissions high?” and not just “where are toxicity-weighted values high?”, but rather “where do high emissions and high toxicity coincide?” The interaction-style approach seems to align most directly with that objective because it emphasizes tracts where both dimensions are elevated simultaneously.
 
-I’ve shared the [resulting scores for comparison] (https://carb.sharepoint.com/:x:/r/sites/AQPSD/CPIS/Data%20Visualization/Emission%20Mapping%20Tool/Working_Data/Bay%20Area%20Prototype%20Data/tract_eicsumn_pollutant_emissions_twe.csv?d=w0b7dd168e7504727b0433763e4d9f7e4&csf=1&web=1&e=T6IPCH), which may help illustrate how the different methods behave across tracts. The file currently includes raw toxics mass, toxicity-weighted emissions (TWE) endpoints, and several derived percentile scores.
+I’ve shared the [resulting scores for comparison](https://carb.sharepoint.com/:x:/r/sites/AQPSD/CPIS/Data%20Visualization/Emission%20Mapping%20Tool/Working_Data/Bay%20Area%20Prototype%20Data/tract_eicsumn_pollutant_emissions_twe.csv?d=w0b7dd168e7504727b0433763e4d9f7e4&csf=1&web=1&e=T6IPCH), which may help illustrate how the different methods behave across tracts. The file currently includes raw toxics mass, toxicity-weighted emissions (TWE) endpoints, and several derived percentile scores.
 
 You can also view an interactive map for comparing tract-level scores below:
 
 [Open tract score comparison map](https://taufiqhassan.github.io/prioritization_screening_score/tract_score_maps_comparison.html)
 
-The score options are:
 
 ## 1. Current toxics percentile score in the dashboard
 
@@ -26,7 +25,7 @@ This is a transparent weighted-average score. It treats mass and the three toxic
 
 Consideration:
 
--- High mass can partly compensate for low toxicity, and high toxicity can partly compensate for low mass.
+- High mass can partly compensate for low toxicity, and high toxicity can partly compensate for low mass.
 
 ## 2. Raw product percentile score
 
@@ -38,11 +37,11 @@ This approach strongly emphasizes tracts that are simultaneously high across all
 
 Consideration:
 
--- Raw mass and TWE endpoints are on different scales and do not share a common physical unit
+- Raw mass and TWE endpoints are on different scales and do not share a common physical unit
 
--- TWE already includes emissions in its calculation, so this can effectively double-count emissions.
+- TWE already includes emissions in its calculation, so this can effectively double-count emissions.
 
--- It also collapses to zero if any one endpoint is zero.
+- It also collapses to zero if any one endpoint is zero.
 
 ## 3. Percentile geometric mean score
 
@@ -96,11 +95,11 @@ I would be very interested in hearing everyone’s thoughts on these approaches,
 
 I also looked at a few existing screening frameworks for comparison:
 
--- EPA RSEIcombines emissions with toxicity weighting, and in more advanced forms also incorporates exposure/dose and potentially exposed population. Conceptually, this supports the idea of interaction-style approaches.
+- EPA RSEI combines emissions with toxicity weighting, and in more advanced forms also incorporates exposure/dose and potentially exposed population. Conceptually, this supports the idea of interaction-style approaches.
 
--- CalEnviroScreen converts heterogeneous indicators into normalized percentile-based scores before combining them into broader screening metrics. This is broadly consistent with the percentile normalization approach used in several of the options above.
+- CalEnviroScreen converts heterogeneous indicators into normalized percentile-based scores before combining them into broader screening metrics. This is broadly consistent with the percentile normalization approach used in several of the options above.
 
--- ToxPi aggregates normalized indicators into weighted components to create an overall prioritization score while maintaining interpretability across domains. This is conceptually similar to combining multiple normalized toxicity dimensions into a composite screening metric.
+- ToxPi aggregates normalized indicators into weighted components to create an overall prioritization score while maintaining interpretability across domains. This is conceptually similar to combining multiple normalized toxicity dimensions into a composite screening metric.
 
 References:
 
