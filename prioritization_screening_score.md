@@ -4,13 +4,11 @@ This page summarizes the scoring options we have been discussing for the tract-l
 
 At a high level, I think the key screening question is not just “where are emissions high?” and not just “where are toxicity-weighted values high?”, but rather “where do high emissions and high toxicity coincide?” The interaction-style approach seems to align most directly with that objective because it emphasizes tracts where both dimensions are elevated simultaneously.
 
-I’ve shared the [resulting scores for comparison] ((https://carb.sharepoint.com/:x:/r/sites/AQPSD/CPIS/Data%20Visualization/Emission%20Mapping%20Tool/Working_Data/Bay%20Area%20Prototype%20Data/tract_eicsumn_pollutant_emissions_twe.csv?d=w0b7dd168e7504727b0433763e4d9f7e4&csf=1&web=1&e=T6IPCH)), which may help illustrate how the different methods behave across tracts. The file currently includes raw toxics mass, toxicity-weighted emissions (TWE) endpoints, and several derived percentile scores.
+I’ve shared the [resulting scores for comparison] (https://carb.sharepoint.com/:x:/r/sites/AQPSD/CPIS/Data%20Visualization/Emission%20Mapping%20Tool/Working_Data/Bay%20Area%20Prototype%20Data/tract_eicsumn_pollutant_emissions_twe.csv?d=w0b7dd168e7504727b0433763e4d9f7e4&csf=1&web=1&e=T6IPCH), which may help illustrate how the different methods behave across tracts. The file currently includes raw toxics mass, toxicity-weighted emissions (TWE) endpoints, and several derived percentile scores.
 
-Interactive map for comparing tract-level scores:
+You can also view an interactive map for comparing tract-level scores below:
 
-<a href="https://taufiqhassan.github.io/prioritization_screening_score/tract_score_maps_comparison.html" target="_blank" rel="noopener noreferrer">
-Open tract score comparison map
-</a>
+[Open tract score comparison map](https://taufiqhassan.github.io/prioritization_screening_score/tract_score_maps_comparison.html)
 
 The score options are:
 
