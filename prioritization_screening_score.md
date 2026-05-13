@@ -8,7 +8,7 @@ I’ve attached the resulting scores for comparison, which may help illustrate h
 
 Interactive map for comparing tract-level scores:
 
-[Open tract score comparison map](https://github.com/TaufiqHassan/prioritization_screening_score/blob/main/tract_score_maps_comparison.html)
+[Open tract score comparison map](https://taufiqhassan.github.io/prioritization_screening_score/tract_score_maps_comparison.html)
 
 The score options are:
 
