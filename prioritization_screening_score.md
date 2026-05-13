@@ -23,7 +23,7 @@ dash_toxics_score =
 
 This is a transparent weighted-average score. It treats mass and the three toxicity endpoints equally after converting each to percentile rank. This is conceptually similar to indicator aggregation methods such as CalEnviroScreen, where different pollution indicators are normalized before being combined.
 
-Consideration:
+**Consideration:**
 
 - High mass can partly compensate for low toxicity, and high toxicity can partly compensate for low mass.
 
@@ -35,7 +35,7 @@ raw_toxics_score = percent_rank(toxics_mass × cancer_twe × chronic_twe × acut
 
 This approach strongly emphasizes tracts that are simultaneously high across all dimensions.
 
-Consideration:
+**Consideration:**
 
 - Raw mass and TWE endpoints are on different scales and do not share a common physical unit
 
@@ -56,7 +56,7 @@ geo_toxics_score =
 
 This improves interpretability relative to the raw product approach by combining normalized percentile scores instead of raw values. It still emphasizes tracts that are consistently elevated across all dimensions.
 
-Consideration:
+**Consideration:**
 
 - Still collapses to zero if any component percentile is zero.
 
