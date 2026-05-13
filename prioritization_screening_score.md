@@ -81,9 +81,9 @@ interaction_toxics_score =
 
 This score separates the problem into two concepts:
 
-How much toxics mass is emitted?
+1. How much toxics mass is emitted?
 
-How toxic are those emissions?
+2. How toxic are those emissions?
 
 It then combines them as an interaction term. In practice, this means high mass matters most when toxicity is also high. A tract with high mass but relatively low toxicity is moderated, and likewise a tract with high toxicity but relatively low mass is also moderated.
 
@@ -95,11 +95,11 @@ I would be very interested in hearing everyone’s thoughts on these approaches,
 
 I also looked at a few existing screening frameworks for comparison:
 
-- EPA RSEI combines emissions with toxicity weighting, and in more advanced forms also incorporates exposure/dose and potentially exposed population. Conceptually, this supports the idea of interaction-style approaches.
+-- EPA RSEI combines emissions with toxicity weighting, and in more advanced forms also incorporates exposure/dose and potentially exposed population. Conceptually, this supports the idea of interaction-style approaches.
 
-- CalEnviroScreen converts heterogeneous indicators into normalized percentile-based scores before combining them into broader screening metrics. This is broadly consistent with the percentile normalization approach used in several of the options above.
+-- CalEnviroScreen converts heterogeneous indicators into normalized percentile-based scores before combining them into broader screening metrics. This is broadly consistent with the percentile normalization approach used in several of the options above.
 
-- ToxPi aggregates normalized indicators into weighted components to create an overall prioritization score while maintaining interpretability across domains. This is conceptually similar to combining multiple normalized toxicity dimensions into a composite screening metric.
+-- ToxPi aggregates normalized indicators into weighted components to create an overall prioritization score while maintaining interpretability across domains. This is conceptually similar to combining multiple normalized toxicity dimensions into a composite screening metric.
 
 References:
 
