@@ -10,51 +10,64 @@ You can also view an interactive map for comparing tract-level scores below:
 
 [Open tract score comparison map](https://taufiqhassan.github.io/prioritization_screening_score/tract_score_maps_comparison.html)
 
+## Updated weighted screening framework
 
-## Current working direction
+A recent direction expands the toxics-only scoring discussion into a broader relative community emissions screening score. Under this framing, the main screening question is where emissions magnitude, toxic potential, and potential population exposure coincide. The score is still intended to be emissions-focused: it is not a health risk assessment, and it is not intended to replace environmental justice tools such as CalEnviroScreen. Instead, it provides an inventory-based perspective on which communities may warrant additional evaluation, emissions-reduction efforts, or air monitoring.
 
-The goal is to develop a qualitative screening approach for scoring both criteria and toxic emissions.
-
-For criteria pollutants, the scoring approach is relatively straightforward: aggregate criteria emissions by census tract, then convert the aggregated emissions to percentile ranks.
-
-For toxic air pollutants, the score should account for both reported toxic mass emissions and relative toxicity. Toxicity-weighted emissions (TWEs) help identify toxic pollutants that may be more concerning within the universe of toxics, based on cancer, non-cancer chronic, and non-cancer acute health values. Under this approach, pollutants with relatively high toxicity can still be prioritized even when their reported mass emissions are comparatively low.
-
-Toxic records with `EMS = 0` should be excluded because they indicate no reported emissions. For records with positive toxic emissions, endpoint-specific TWE values should be calculated where the corresponding health value is available:
+The proposed overall structure is:
 
 ```text
-CancerTWE = EMS × InhalationCancerURF × MolWtCorrection × 7700
-ChronicTWE = EMS × (1 / 8760) × (1 / InhalationChronicREL) × 150
-AcuteTWE = EMS × (1 / 8760) × (1 / InhalationAcuteREL) × 1500
+relative_screening_score = hazard_score × potential_exposure_score
 ```
 
-One implementation detail to resolve is how to handle endpoint-specific blank TWE values after excluding zero-emission records. Based on a check against `MASTER_HEALTH_202503100840.csv`, if `EMS` is positive and the acute REL is available and positive, the AcuteTWE formula produces a positive value. Positive-emission rows with blank AcuteTWE are explained by blank `AcuteREL` values in the health table. In other words, these cases appear to mean that an acute endpoint value is not available or not applicable for that pollutant, not that emissions are zero.
-
-The current preferred toxics direction is to normalize toxic mass, cancer TWE, chronic TWE, and acute TWE as percentile scores before combining them. This keeps the components unitless and comparable while preserving the idea that pollutants with lower mass but higher toxicity may still be prioritized.
-
-Because the three toxicity endpoints are not available for every pollutant, the toxics scoring method should distinguish between a true zero and an unavailable endpoint. A product-style score that always multiplies all four components together can unintentionally collapse a tract score when one health endpoint is blank. A more robust approach is:
-
-1. Exclude toxic records where `EMS = 0`.
-
-2. Calculate endpoint-specific TWE values only where the corresponding health value is available.
-
-3. Convert toxic mass and each available endpoint TWE aggregate to percentile scores.
-
-4. Combine the available endpoint percentiles into a toxicity percentile component, while retaining an endpoint coverage flag or count.
-
-5. Combine toxic mass percentile with the toxicity percentile component as an interaction score.
+The hazard score represents what is being emitted and how toxic those emissions may be. One weighted version discussed was:
 
 ```text
-toxicity_endpoint_score =
-  average_or_geomean(available cancer, chronic, and acute TWE percentiles)
-
-toxics_score =
-  (toxics_mass_percentile / 100)
-× (toxicity_endpoint_score / 100)
-× 100
+hazard_score =
+  0.20 × ME
++ 0.35 × CE
++ 0.25 × NCC
++ 0.20 × NCA
 ```
 
-If no endpoint-specific health value is available for a toxic pollutant or tract aggregate, the emissions can still be retained in the toxic mass summary, but they should not be treated as having zero toxicity-weighted impact. Those cases should be flagged as "no toxicity endpoint available" or handled as a separate mass-only screening indicator.
+where `ME` is the merged emissions magnitude percentile, including criteria emissions and toxic emissions without available health values; `CE` is the cancer TWE percentile; `NCC` is the non-cancer chronic TWE percentile; and `NCA` is the non-cancer acute TWE percentile.
 
+One concern with a simple equal-weight baseline is that the three TWE endpoints collectively receive most of the influence:
+
+```text
+hazard_score = 0.25 × E + 0.25 × CE + 0.25 × NCC + 0.25 × NCA
+```
+
+In that case, toxicity-related indicators collectively account for 75 percent of the hazard score, while emissions magnitude accounts for 25 percent. A cleaner interpretation may be to treat hazard as two major dimensions: emissions magnitude and toxicity potential.
+
+```text
+hazard_score = 0.50 × E + 0.50 × T
+
+T = (CE + NCC + NCA) / 3
+```
+
+This is equivalent to:
+
+```text
+hazard_score =
+  0.50 × E
++ 0.167 × CE
++ 0.167 × NCC
++ 0.167 × NCA
+```
+
+This gives emissions magnitude and toxicity potential equal importance, while allowing the three toxicity endpoints to share the toxicity portion of the score. Alternative weighting scenarios, such as 40/60 or 30/70 splits between emissions magnitude and toxicity potential, can be used to test whether community rankings are robust to reasonable weighting assumptions.
+
+For potential exposure, the discussed structure uses population groups as percentile-based indicators:
+
+```text
+potential_exposure_score =
+  0.40 × children
++ 0.40 × seniors
++ 0.20 × remaining_population
+```
+
+Because the weights are policy and screening choices rather than statistical estimates, the proposed data assessment should test whether the highest-priority communities are stable under plausible alternatives. Spearman correlation can be used to compare the hazard indicators with each other and to compare baseline and alternative weighted scores. This is particularly useful for checking whether cancer, chronic, and acute TWE percentiles are highly correlated, since highly correlated endpoint indicators may collectively exert more influence than intended.
 
 ## 1. Current toxics percentile score in the dashboard
 
