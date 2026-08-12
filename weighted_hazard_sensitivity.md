@@ -25,14 +25,13 @@ hazard_30_70 = 0.30 x E + 0.70 x T
 
 The tract rankings are very stable under the 40/60 and 30/70 alternatives. Exact tract ranks often change by a few positions, but the high-priority groups remain largely the same.
 
-| Scenario | Spearman vs 50/50 | Top 25 overlap | Top 50 overlap | Top 100 overlap | Median absolute rank shift | Tracts moving >50 ranks | Tracts moving >100 ranks |
-|---|---:|---:|---:|---:|---:|---:|---:|
-| 40/60 | 0.9978 | 24 / 25 | 50 / 50 | 99 / 100 | 11 | 125 | 15 |
-| 30/70 | 0.9912 | 23 / 25 | 48 / 50 | 95 / 100 | 21 | 363 | 128 |
+| Scenario | Spearman vs 50/50 | Top 25 overlap | Top 50 overlap | Top 100 overlap |
+|---|---:|---:|---:|---:|
+| 40/60 | 0.9978 | 24 / 25 | 50 / 50 | 99 / 100 |
+| 30/70 | 0.9912 | 23 / 25 | 48 / 50 | 95 / 100 |
 
 Spearman correlation compares the ranked tract list under each alternative to the ranked tract list under 50/50. A value of 1.0 would mean the tract order is identical. Values above 0.99 indicate that the overall ordering is still very similar.
 
-![Weighted hazard sensitivity](weighted_hazard_sensitivity.png)
 
 ## Interpretation
 
