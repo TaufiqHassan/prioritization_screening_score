@@ -20,7 +20,9 @@ The proposed overall structure is:
 relative_screening_score = hazard_score × potential_exposure_score
 ```
 
-The hazard score represents what is being emitted and how toxic those emissions may be. One weighted version discussed was:
+The framework has two main parts. The hazard score represents what is being emitted and how toxic those emissions may be. The potential exposure score represents where larger populations, especially children and seniors, coincide with those hazard scores.
+
+One weighted hazard version discussed was:
 
 ```text
 hazard_score =
@@ -58,8 +60,6 @@ hazard_score =
 
 This gives emissions magnitude and toxicity potential equal importance, while allowing the three toxicity endpoints to share the toxicity portion of the score. Alternative weighting scenarios, such as 40/60 or 30/70 splits between emissions magnitude and toxicity potential, can be used to test whether community rankings are robust to reasonable weighting assumptions.
 
-A separate [weighted hazard sensitivity note](weighted_hazard_sensitivity.md) compares the 50/50 base setting with 40/60 and 30/70 toxicity-emphasis alternatives.
-
 For potential exposure, the discussed structure uses population groups as percentile-based indicators:
 
 ```text
@@ -69,7 +69,7 @@ potential_exposure_score =
 + 0.20 × remaining_population
 ```
 
-A separate [population exposure and relative screening score note](population_exposure_relative_screening_score.md) documents the ACS population source, the Bay Area percentile basis, and how the potential exposure score is combined with the hazard score.
+Two companion notes document these additions in more detail. The [weighted hazard sensitivity note](weighted_hazard_sensitivity.md) compares the 50/50 base hazard setting with 40/60 and 30/70 toxicity-emphasis alternatives. The [population exposure and relative screening score note](population_exposure_relative_screening_score.md) documents the ACS population source, the Bay Area percentile basis, and how the potential exposure score is combined with the hazard score.
 
 Because the weights are policy and screening choices rather than statistical estimates, the proposed data assessment should test whether the highest-priority communities are stable under plausible alternatives. Spearman correlation can be used to compare the hazard indicators with each other and to compare baseline and alternative weighted scores. This is particularly useful for checking whether cancer, chronic, and acute TWE percentiles are highly correlated, since highly correlated endpoint indicators may collectively exert more influence than intended.
 
