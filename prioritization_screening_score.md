@@ -58,6 +58,8 @@ hazard_score =
 
 This gives emissions magnitude and toxicity potential equal importance, while allowing the three toxicity endpoints to share the toxicity portion of the score. Alternative weighting scenarios, such as 40/60 or 30/70 splits between emissions magnitude and toxicity potential, can be used to test whether community rankings are robust to reasonable weighting assumptions.
 
+A separate [weighted hazard sensitivity note](weighted_hazard_sensitivity.md) compares the 50/50 base setting with 40/60 and 30/70 toxicity-emphasis alternatives.
+
 For potential exposure, the discussed structure uses population groups as percentile-based indicators:
 
 ```text
