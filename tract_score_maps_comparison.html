@@ -83,6 +83,17 @@
       return record ? record[key] : null;
     }
 
+    const categoricalPalettes = {
+      sb535_flag: {
+        0: '#f1f5f9',
+        1: '#b10026',
+        legend: [
+          { color: '#f1f5f9', label: '0 - Not SB 535' },
+          { color: '#b10026', label: '1 - SB 535 designated' }
+        ]
+      }
+    };
+
     function activePalette(key) {
       const stats = scoreStats[key];
       return stats && stats.breaks ? stats.breaks : palette;
@@ -90,6 +101,8 @@
 
     function colorFor(value, key) {
       if (value === null || value === undefined || Number.isNaN(value)) return '#d8dee6';
+      const categorical = categoricalPalettes[key];
+      if (categorical) return categorical[value] || '#d8dee6';
       if (value === 0) return zeroColor;
       const buckets = activePalette(key);
       const bucket = buckets.find(item => value > item.min && value <= item.max);
@@ -143,6 +156,13 @@
 
     function updateLegend() {
       const key = select.value;
+      const categorical = categoricalPalettes[key];
+      if (categorical) {
+        document.getElementById('legend').innerHTML = categorical.legend.map(item => `
+          <div class="legend-row"><span class="swatch" style="background:${item.color}"></span><span>${item.label}</span></div>
+        `).join('') + '<div class="legend-row"><span class="swatch" style="background:#d8dee6"></span><span>No data</span></div>';
+        return;
+      }
       const buckets = activePalette(key);
       document.getElementById('legend').innerHTML = `
         <div class="legend-row"><span class="swatch" style="background:${zeroColor}"></span><span>Exactly 0</span></div>
