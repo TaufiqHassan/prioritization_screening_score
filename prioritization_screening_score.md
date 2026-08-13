@@ -69,7 +69,7 @@ potential_exposure_score =
 + 0.20 × remaining_population
 ```
 
-Two companion notes document these additions in more detail. The [weighted hazard sensitivity note](weighted_hazard_sensitivity.md) compares the 50/50 base hazard setting with 40/60 and 30/70 toxicity-emphasis alternatives. The [population exposure and relative screening score note](population_exposure_relative_screening_score.md) documents the ACS population source, the Bay Area percentile basis, and how the potential exposure score is combined with the hazard score.
+Companion notes document these additions in more detail. The [weighted hazard sensitivity note](weighted_hazard_sensitivity.md) compares the 50/50 base hazard setting with 40/60 and 30/70 toxicity-emphasis alternatives. The [population exposure and relative screening score note](population_exposure_relative_screening_score.md) documents the ACS population source, the Bay Area percentile basis, and how the potential exposure score is combined with the hazard score. The [AB 617 community flag note](ab617_community_flag.md) documents how AB 617 boundaries were joined to tracts and how the flag should be interpreted as program context.
 
 Because the weights are policy and screening choices rather than statistical estimates, the proposed data assessment should test whether the highest-priority communities are stable under plausible alternatives. Spearman correlation can be used to compare the hazard indicators with each other and to compare baseline and alternative weighted scores. This is particularly useful for checking whether cancer, chronic, and acute TWE percentiles are highly correlated, since highly correlated endpoint indicators may collectively exert more influence than intended.
 
